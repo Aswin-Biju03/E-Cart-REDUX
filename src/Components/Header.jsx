@@ -6,9 +6,6 @@ import { Badge, Navbar } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
-faCartShopping
-Badge;
-faHeart;
 function Header() {
   return (
     <div>
@@ -23,7 +20,6 @@ function Header() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Item>
-                {" "}
                 <input
                   type="text"
                   className="form-control"
@@ -43,7 +39,7 @@ function Header() {
               </Nav.Item>
               <Nav.Item>
                 <Link
-                  to={"/wishlist"}
+                  to={"/cart"}
                   className="text-light text-decoration-none"
                 >
                   <FontAwesomeIcon icon={faCartShopping} /> Cart
