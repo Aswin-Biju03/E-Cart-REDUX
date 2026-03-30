@@ -6,7 +6,7 @@ import { Badge, Navbar } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
 import { Link } from "react-router-dom";
-function Header() {
+function Header({insideProducts}) {
   return (
     <div>
       <Navbar expand="lg" className="bg-primary fixed-top">
@@ -20,11 +20,11 @@ function Header() {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Item>
-                <input
+                {insideProducts && <input
                   type="text"
                   className="form-control"
                   placeholder="Search Products here"
-                />
+                />}
               </Nav.Item>
               <Nav.Item>
                 <Link
