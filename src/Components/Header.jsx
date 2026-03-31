@@ -5,8 +5,11 @@ import React from "react";
 import { Badge, Navbar } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
+import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-function Header({insideProducts}) {
+import { searchProduct } from "../redux/slice/productSlice";
+function Header({ insideProducts }) {
+  const dispatch = useDispatch();
   return (
     <div>
       <Navbar expand="lg" className="bg-primary fixed-top">
@@ -20,11 +23,14 @@ function Header({insideProducts}) {
           <Navbar.Collapse id="basic-navbar-nav">
             <Nav className="ms-auto">
               <Nav.Item>
-                {insideProducts && <input
-                  type="text"
-                  className="form-control"
-                  placeholder="Search Products here"
-                />}
+                {insideProducts && (
+                  <input
+                    onChange={(e) => dispatch(searchProduct(e.target.value))}
+                    type="text"
+                    className="form-control"
+                    placeholder="Search Products here"
+                  />
+                )}
               </Nav.Item>
               <Nav.Item>
                 <Link
@@ -38,10 +44,7 @@ function Header({insideProducts}) {
                 </Link>
               </Nav.Item>
               <Nav.Item>
-                <Link
-                  to={"/cart"}
-                  className="text-light text-decoration-none"
-                >
+                <Link to={"/cart"} className="text-light text-decoration-none">
                   <FontAwesomeIcon icon={faCartShopping} /> Cart
                   <Badge pill bg="secondary">
                     10
