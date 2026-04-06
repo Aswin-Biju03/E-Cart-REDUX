@@ -5,11 +5,14 @@ import React from "react";
 import { Badge, Navbar } from "react-bootstrap";
 import { Nav } from "react-bootstrap";
 import Container from "react-bootstrap/Container";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { searchProduct } from "../redux/slice/productSlice";
 function Header({ insideProducts }) {
   const dispatch = useDispatch();
+  const userWishlist = useSelector((state) => state.wishlistReducer);
+  const userCart = useSelector((state) => state.cartReducer);
+
   return (
     <div>
       <Navbar expand="lg" className="bg-primary fixed-top">
@@ -39,7 +42,7 @@ function Header({ insideProducts }) {
                 >
                   <FontAwesomeIcon icon={faHeart} /> WishList
                   <Badge pill bg="secondary">
-                    10
+                    {userWishlist?.length}
                   </Badge>
                 </Link>
               </Nav.Item>
@@ -47,7 +50,7 @@ function Header({ insideProducts }) {
                 <Link to={"/cart"} className="text-light text-decoration-none">
                   <FontAwesomeIcon icon={faCartShopping} /> Cart
                   <Badge pill bg="secondary">
-                    10
+                    {userCart?.length}
                   </Badge>
                 </Link>
               </Nav.Item>
